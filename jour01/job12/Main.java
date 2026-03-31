@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner lire = new Scanner(System.in);
+        try (Scanner lire = new Scanner(System.in)) {
+            System.out.print("Entrez un nombre entier : ");
+            int nb = lire.nextInt();
 
-        System.out.print("Entrez un nombre entier : ");
-        int nb = lire.nextInt();
-
-        for (int i = 0; i <= nb; i++) {
-            if (i % 2 == 0) {
-                System.out.println(i);
+            for (int i = 0; i <= nb; i++) {
+                if (i % 2 == 0) {
+                    System.out.println(i);
+                }
             }
         }
     }
