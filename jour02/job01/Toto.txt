@@ -1,0 +1,4 @@
+Ce code ne fonctionnera pas comme ça.
+"toto" est une variable d'instance, et on essaye d'y accéder sans passer par un objet.
+
+"non-static variable toto cannot be referenced from a static context(errors(1): 11:9-11:46)"
