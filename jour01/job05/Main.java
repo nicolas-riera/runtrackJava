@@ -1,8 +1,8 @@
-package jour01;
+package jour01.job05;
 
 import java.util.Scanner;
 
-public class job05 {
+public class Main {
     public static void main(String[] args) {
         Scanner lire = new Scanner(System.in);
 

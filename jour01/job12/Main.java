@@ -1,18 +1,18 @@
-package jour01;
+package jour01.job12;
 
 import java.util.Scanner;
 
-public class job08 {
+public class Main {
     public static void main(String[] args) {
         Scanner lire = new Scanner(System.in);
 
-        System.out.println("Entrez un nombre : ");
+        System.out.print("Entrez un nombre entier : ");
         int nb = lire.nextInt();
-        
-        int somme = 0;
+
         for (int i = 0; i <= nb; i++) {
-            somme = somme + (nb*nb);
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
         }
-        System.out.print(somme);
     }
 }

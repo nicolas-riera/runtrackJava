@@ -1,15 +1,15 @@
-package jour01;
+package jour01.job01;
 
 import java.util.Scanner;
 
-public class job02 {
+public class Main {
     public static void main(String[] args) {
         Scanner lire = new Scanner(System.in);
 
-        System.out.print("Entrez votre nom : ");
+        System.out.println("Entrez du texte : ");
         String text = lire.nextLine();
 
-        System.out.printf("Bonjour %s !", text);
+        System.out.printf("Vous avez écrit : %s", text);
 
     }
 }

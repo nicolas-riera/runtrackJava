@@ -1,6 +1,6 @@
-package jour01;
+package jour01.job00;
 
-public class job00 {
+public class Main {
     public static void main(String[] args) {
         char c = 'A';
         String str = "Hello World";
