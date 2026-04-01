@@ -153,12 +153,26 @@ abstract class Personne {
         this.adresse = adresse;
     }
 
-    protected int getIdentite() { return identite; }
-    protected void setIdentite(int identite) { this.identite = identite; }
-    protected String getNomSocial() { return nomSocial; }
-    protected void setNomSocial(String nomSocial) { this.nomSocial = nomSocial; }
-    protected String getAdresse() { return adresse; }
-    protected void setAdresse(String adresse) { this.adresse = adresse; }
+    protected int getIdentite() {
+        return identite;
+    }
+    protected void setIdentite(int identite) {
+        this.identite = identite;
+    }
+
+    protected String getNomSocial() {
+        return nomSocial;
+    }
+    protected void setNomSocial(String nomSocial) {
+        this.nomSocial = nomSocial;
+    }
+
+    protected String getAdresse() {
+        return adresse;
+    }
+    protected void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
     protected void affiche() {
         System.out.println("ID : " + identite + ", Nom : " + nomSocial + ", Adresse : " + adresse);
@@ -173,8 +187,12 @@ class Client extends Personne {
         this.chiffreAffaire = chiffreAffaire;
     }
 
-    public double getChiffreAffaire() { return chiffreAffaire; }
-    public void setChiffreAffaire(double chiffreAffaire) { this.chiffreAffaire = chiffreAffaire; }
+    public double getChiffreAffaire(){
+        return chiffreAffaire; 
+    }
+    public void setChiffreAffaire(double chiffreAffaire) {
+        this.chiffreAffaire = chiffreAffaire;
+    }
 
     @Override
     public void affiche() {
@@ -203,14 +221,33 @@ class Article {
         this.quantiteStock = a.quantiteStock;
     }
 
-    public String getReference() { return reference; }
-    public void setReference(String reference) { this.reference = reference; }
-    public String getDesignation() { return designation; }
-    public void setDesignation(String designation) { this.designation = designation; }
-    public double getPrixUnitaire() { return prixUnitaire; }
-    public void setPrixUnitaire(double prixUnitaire) { this.prixUnitaire = prixUnitaire; }
-    public int getQuantiteStock() { return quantiteStock; }
-    public void setQuantiteStock(int quantiteStock) { this.quantiteStock = quantiteStock; }
+    public String getReference() {
+        return reference;
+    }
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public double getPrixUnitaire() {
+        return prixUnitaire;
+    }
+    public void setPrixUnitaire(double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    public int getQuantiteStock() {
+        return quantiteStock; 
+    }
+    public void setQuantiteStock(int quantiteStock) {
+        this.quantiteStock = quantiteStock;
+    }
 
     public void affiche() {
         System.out.println("Ref : " + reference + " | " + designation + " | PU : " + prixUnitaire + " | Stock : " + quantiteStock);
@@ -228,12 +265,26 @@ class Commande {
         this.client = client;
     }
 
-    public int getNumeroCommande() { return numeroCommande; }
-    public void setNumeroCommande(int numeroCommande) { this.numeroCommande = numeroCommande; }
-    public Date getDateCommande() { return dateCommande; }
-    public void setDateCommande(Date dateCommande) { this.dateCommande = dateCommande; }
-    public Client getClient() { return client; }
-    public void setClient(Client client) { this.client = client; }
+    public int getNumeroCommande() {
+        return numeroCommande;
+    }
+    public void setNumeroCommande(int numeroCommande) {
+        this.numeroCommande = numeroCommande;
+    }
+
+    public Date getDateCommande() {
+        return dateCommande; 
+    }
+    public void setDateCommande(Date dateCommande) {
+        this.dateCommande = dateCommande;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
 
 class Ligne {
@@ -247,10 +298,24 @@ class Ligne {
         this.quantiteCommande = quantiteCommande;
     }
 
-    public Commande getCommande() { return commande; }
-    public void setCommande(Commande commande) { this.commande = commande; }
-    public Article getArticle() { return article; }
-    public void setArticle(Article article) { this.article = article; }
-    public int getQuantiteCommande() { return quantiteCommande; }
-    public void setQuantiteCommande(int quantiteCommande) { this.quantiteCommande = quantiteCommande; }
+    public Commande getCommande() {
+        return commande;
+    }
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+    public void setArticle(Article article) {
+        this.article = article;
+    }
+
+    public int getQuantiteCommande() {
+        return quantiteCommande;
+    }
+    public void setQuantiteCommande(int quantiteCommande) {
+        this.quantiteCommande = quantiteCommande;
+    }
 }
