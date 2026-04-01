@@ -31,7 +31,7 @@ public class Commerciale {
             System.out.println("4. Supprimer un client");
             System.out.println("5. Passer une commande");
             System.out.println("6. Annuler une commande");
-            System.out.println("7. Afficher articles et clients");
+            System.out.println("7. Afficher articles, clients et commandes");
             System.out.println("0. Quitter");
             System.out.print("Choix : ");
             
@@ -99,22 +99,71 @@ public class Commerciale {
                     break;
 
                 case 5:
-                    if (gestion.clients.isEmpty()) {
-                        System.out.println("Créez d'abord un client !");
+                    if (gestion.clients.isEmpty() || gestion.articles.isEmpty()) {
+                        System.out.println("Erreur : Il faut au moins un client ET un article.");
                     } else {
                         System.out.print("Numéro commande : "); 
                         int num = sc.nextInt();
                         sc.nextLine();
+                        
                         Commande cmd = new Commande(num, new Date(), gestion.clients.get(0));
                         gestion.passerCommande(cmd);
-                        System.out.println("Commande enregistrée pour le client " + gestion.clients.get(0).getNomSocial());
+
+                        System.out.println("Quel article (indice) ?");
+                        for(int i=0; i<gestion.articles.size(); i++) {
+                            System.out.println(i + ": " + gestion.articles.get(i).getDesignation());
+                        }
+                        int choixArt = sc.nextInt();
+                        
+                        System.out.print("Quantité à commander : ");
+                        int qte = sc.nextInt();
+                        sc.nextLine();
+
+                        if (choixArt >= 0 && choixArt < gestion.articles.size()) {
+                            Article artChoisi = gestion.articles.get(choixArt);
+                            
+                            int stockActuel = artChoisi.getQuantiteStock();
+                            
+                            if (stockActuel >= qte) {
+                                artChoisi.setQuantiteStock(stockActuel - qte);
+                                
+                                Ligne l = new Ligne(cmd, artChoisi, qte);
+                                gestion.lignes.add(l);
+                                
+                                System.out.println("Commande validée. Nouveau stock pour " + 
+                                                   artChoisi.getDesignation() + " : " + artChoisi.getQuantiteStock());
+                            } else {
+                                System.out.println("Stock insuffisant ! (Disponible : " + stockActuel + ")");
+                            }
+                        } else {
+                            System.out.println("Indice d'article invalide.");
+                        }
                     }
                     break;
 
                 case 6:
                     if (!gestion.commandes.isEmpty()) {
-                        gestion.commandes.remove(0);
-                        System.out.println("Dernière commande annulée.");
+                        Commande cmdASupprimer = gestion.commandes.get(0);
+
+                        for (int i = 0; i < gestion.lignes.size(); i++) {
+                            Ligne li = gestion.lignes.get(i);
+                            
+                            if (li.getCommande().equals(cmdASupprimer)) {
+                                Article art = li.getArticle();
+                                int qteAnnulee = li.getQuantiteCommande();
+                                
+                                art.setQuantiteStock(art.getQuantiteStock() + qteAnnulee);
+                                
+                                System.out.println("Stock restauré pour " + art.getDesignation() + 
+                                                   " (+ " + qteAnnulee + ")");
+                            }
+                        }
+
+                        gestion.lignes.removeIf(l -> l.getCommande().equals(cmdASupprimer));
+
+                        gestion.annulerCommande(cmdASupprimer);
+
+                        System.out.println("Commande n°" + cmdASupprimer.getNumeroCommande() + " annulée.");
                     } else {
                         System.out.println("Aucune commande à annuler.");
                     }
@@ -122,12 +171,18 @@ public class Commerciale {
                 
                 case 7:
                     System.out.println("\n-- Articles --");
-                    if (gestion.articles.isEmpty()) System.out.println("Aucun article.");
                     for(Article art : gestion.articles) art.affiche();
                     
                     System.out.println("\n-- Clients --");
-                    if (gestion.clients.isEmpty()) System.out.println("Aucun client.");
                     for(Client cli : gestion.clients) cli.affiche();
+
+                    System.out.println("\n-- Détails des Lignes de Commande --");
+                    if (gestion.lignes.isEmpty()) System.out.println("Aucune ligne.");
+                    for(Ligne li : gestion.lignes) {
+                        System.out.println("Cmd n°" + li.getCommande().getNumeroCommande() + 
+                                           " | Article: " + li.getArticle().getDesignation() + 
+                                           " | Qté: " + li.getQuantiteCommande());
+                    }
                     break;
 
                 case 0:
