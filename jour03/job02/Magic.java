@@ -1,7 +1,5 @@
 package jour03.job02;
 
-import java.util.ArrayList;
-
 abstract class Carte {
     protected int cout;
 
