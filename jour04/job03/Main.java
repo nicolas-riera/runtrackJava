@@ -45,7 +45,7 @@ public class Main {
         int milieu = longueur / 2;
 
         GenerateurChaine thread1 = new GenerateurChaine(milieu);
-        GenerateurChaine thread2 = new GenerateurChaine(longueur - milieu); // gère impair
+        GenerateurChaine thread2 = new GenerateurChaine(longueur - milieu);
 
         thread1.start();
         thread2.start();
