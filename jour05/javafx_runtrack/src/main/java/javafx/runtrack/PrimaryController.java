@@ -3,7 +3,7 @@ package javafx.runtrack;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class PrimaryController {
@@ -18,11 +18,21 @@ public class PrimaryController {
     private TextField nomInput;
 
     @FXML
-    private MenuItem redButton;
+    private ChoiceBox<String> colorPicker1;
     @FXML
-    private MenuItem blueButton;
+    private ChoiceBox<String> colorPicker2;
     @FXML
-    private MenuItem greenButton;
+    private Button okColorButton;
+
+    @FXML
+    public void initialize() {
+        
+        colorPicker1.getItems().addAll("Rouge", "Bleu", "Vert");
+        colorPicker1.getSelectionModel().selectFirst();
+
+        colorPicker2.getItems().addAll("Rose", "Cyan", "Jaune");
+        colorPicker2.getSelectionModel().selectFirst();
+    }
 
     @FXML
     private void handleQuitAction() {   
@@ -36,15 +46,10 @@ public class PrimaryController {
     }
 
     @FXML
-    private void handleRedButton() {
-        System.out.println("Red");
-    }
-    @FXML
-    private void handleBlueButton() {
-        System.out.println("Blue");
-    }
-    @FXML
-    private void handleGreenButton() {
-        System.out.println("Green");
+    private void handleColorButton() {   
+       String color1 = colorPicker1.getValue();
+       String color2 = colorPicker2.getValue();
+       System.out.println(color1);
+       System.out.println(color2);
     }
 } 
