@@ -3,6 +3,7 @@ package javafx.runtrack;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class PrimaryController {
 
@@ -10,7 +11,19 @@ public class PrimaryController {
     private Button quitButton;
 
     @FXML
+    private Button sendButton;
+
+    @FXML
+private TextField nomInput;
+
+    @FXML
     private void handleQuitAction() {
         Platform.exit(); 
+    }
+
+    @FXML
+    private void handleSendAction() {
+        String valeur = nomInput.getText();
+        System.out.println(valeur);
     }
 } 
