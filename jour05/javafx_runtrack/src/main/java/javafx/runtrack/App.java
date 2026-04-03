@@ -1,30 +1,24 @@
 package javafx.runtrack;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-/**
- * JavaFX Application
- */
-public class App extends Application 
-{
+public class App extends Application {
     @Override
-    public void start(Stage stage) 
-    {
-        Label label = new Label("Hello Nic");
-        StackPane root = new StackPane(label);
-        Scene scene = new Scene(root, 800, 800);
-        
-        stage.setTitle("JavaFX RunTrack");
-        stage.setScene(scene);
-        stage.show();
-    }
+public void start(Stage primaryStage) throws Exception {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/runtrack.fxml"));
+    javafx.scene.Parent root = loader.load(); 
 
-    public static void main(String[] args) 
-    {
+    Scene scene = new Scene(root);
+    
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("JavaFX");
+    primaryStage.show();
+}
+
+    public static void main(String[] args) {
         launch(args);
     }
 }
